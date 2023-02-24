@@ -9,10 +9,11 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.R
  * 资源服务器配置
  */
 @Configuration
-@EnableResourceServer
+@EnableResourceServer  //声明开启 OAuth 资源服务器的功能
 public class OAuth2ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     @Override
+    //设置 HTTP 权限
     public void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
             // 设置 /login 无需权限访问

@@ -31,8 +31,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 inMemoryAuthentication()
                 // 不使用 PasswordEncoder 密码编码器
                 .passwordEncoder(passwordEncoder())
-                // 配置 yunai 用户
-                .withUser("yunai").password("1024").roles("USER");
+                // 配置用户
+                .withUser("liuchao").password("888888").roles("USER");
     }
 
 //    @Override

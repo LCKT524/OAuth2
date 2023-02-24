@@ -9,6 +9,9 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 
+/**
+ * @author Liuc_dell
+ */
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
@@ -31,8 +34,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 inMemoryAuthentication()
                 // 不使用 PasswordEncoder 密码编码器
                 .passwordEncoder(passwordEncoder())
-                // 配置 yunai 用户
-                .withUser("yunai").password("1024").roles("USER");
+                // 配置 用户
+                .withUser("liuchao").password("888888").roles("USER");
     }
 
 }

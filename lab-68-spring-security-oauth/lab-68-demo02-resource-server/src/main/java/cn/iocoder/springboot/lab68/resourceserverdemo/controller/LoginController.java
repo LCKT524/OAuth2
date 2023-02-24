@@ -25,18 +25,19 @@ public class LoginController {
     @PostMapping("/login")
     public OAuth2AccessToken login(@RequestParam("username") String username,
                                    @RequestParam("password") String password) {
-        // 创建 ResourceOwnerPasswordResourceDetails 对象
+        // 创建 ResourceOwnerPasswordResourceDetails 对象，填写密码模式授权需要的请求参数
         ResourceOwnerPasswordResourceDetails resourceDetails = new ResourceOwnerPasswordResourceDetails();
         resourceDetails.setAccessTokenUri(accessTokenUri);
         resourceDetails.setClientId(oauth2ClientProperties.getClientId());
         resourceDetails.setClientSecret(oauth2ClientProperties.getClientSecret());
         resourceDetails.setUsername(username);
         resourceDetails.setPassword(password);
-        // 创建 OAuth2RestTemplate 对象
+        // 创建 OAuth2RestTemplate 对象，用于请求授权服务器
         OAuth2RestTemplate restTemplate = new OAuth2RestTemplate(resourceDetails);
+        //表示使用密码模式授权
         restTemplate.setAccessTokenProvider(new ResourceOwnerPasswordAccessTokenProvider());
         // 获取访问令牌
-        return restTemplate.getAccessToken();
+        return restTemplate.getAccessToken();//调用授权服务器的 /oauth/token 接口
     }
 
 }
